@@ -5,3 +5,4 @@ It uses the following technologies:
 * JavaFX 15
 * Maven
 * Nitrite Java
+## Setup and run
