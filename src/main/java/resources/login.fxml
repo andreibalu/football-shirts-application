@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.LoginController">
+<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.LoginController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
@@ -35,6 +35,11 @@
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <Button onAction="#handleLoginAction" text="Login" />
     </HBox>
+   <HBox prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <children>
+         <Button mnemonicParsing="false" onAction="#handleRedirectRegisterAction" prefHeight="25.0" prefWidth="203.0" text="No account? Register here" />
+      </children>
+   </HBox>
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />

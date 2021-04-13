@@ -3,6 +3,7 @@ package org.loose.fis.fssa.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.fssa.exceptions.InvalidCredentialsException;
 import org.loose.fis.fssa.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -34,6 +35,25 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+    public static void verifyLogin(String username,String password) throws InvalidCredentialsException{
+    	checkUserCredentialsInLogin(username,password);
+    }
+    private static void checkUserCredentialsInLogin(String username, String password) throws InvalidCredentialsException {
+    	int contor=0;
+    	for(User user : userRepository.find()) {
+    		if(Objects.equals(username,user.getUsername()))
+    		{
+    			if(Objects.equals(user.getPassword(),encodePassword(username,password)))
+    			{
+    				contor++;
+    			}
+    		}
+    	}
+    	if(contor==0)
+    	{
+    		throw new InvalidCredentialsException();
+    	}
     }
 
     private static String encodePassword(String salt, String password) {
