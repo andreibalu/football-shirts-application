@@ -35,16 +35,14 @@
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <Button onAction="#handleLoginAction" text="Login" />
     </HBox>
-   <HBox prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-      <children>
-         <Button mnemonicParsing="false" onAction="#handleRedirectRegisterAction" prefHeight="25.0" prefWidth="203.0" text="No account? Register here" />
-      </children>
-   </HBox>
+   <HBox prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+   <Button mnemonicParsing="false" onAction="#handleRedirectRegisterAction" prefHeight="25.0" prefWidth="203.0" text="No account? Register here" GridPane.columnIndex="1" GridPane.rowIndex="8" />
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
