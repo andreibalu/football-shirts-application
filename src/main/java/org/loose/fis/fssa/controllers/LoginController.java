@@ -38,14 +38,14 @@ public void handleLoginAction() throws Exception {
    {
 	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/customerHome.fxml"));
        primaryStage.setTitle("Customer Home");
-       primaryStage.setScene(new Scene(root, 300, 275));
+       primaryStage.setScene(new Scene(root, 400, 300));
        primaryStage.show();
    }
    if(rol.equals("Shop Owner"))
    {
 	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/shopownerHome.fxml"));
        primaryStage.setTitle("Shop Owner");
-       primaryStage.setScene(new Scene(root, 300, 275));
+       primaryStage.setScene(new Scene(root, 400, 300));
        primaryStage.show();
    }
 	}catch(InvalidCredentialsException e) {
@@ -57,7 +57,7 @@ public void handleRedirectRegisterAction() throws Exception{
 	Stage primaryStage=(Stage)loginMessage.getScene().getWindow();
 	 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
      primaryStage.setTitle("Register");
-     primaryStage.setScene(new Scene(root, 300, 275));
+     primaryStage.setScene(new Scene(root, 400, 300));
      primaryStage.show();
 }
 }
