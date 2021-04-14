@@ -1,5 +1,4 @@
 package org.loose.fis.fssa;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +16,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
-        primaryStage.setTitle("Registration");
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
+        primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
