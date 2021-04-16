@@ -45,7 +45,7 @@ public void handleLoginAction() throws Exception {
    {
 	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/shopownerHome.fxml"));
        primaryStage.setTitle("Shop Owner");
-       primaryStage.setScene(new Scene(root, 400, 300));
+       primaryStage.setScene(new Scene(root, 900, 600));
        primaryStage.show();
    }
 	}catch(InvalidCredentialsException e) {
