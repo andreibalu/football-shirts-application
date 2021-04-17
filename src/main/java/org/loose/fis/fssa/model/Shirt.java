@@ -11,9 +11,9 @@ public class Shirt {
     private String league;
     private int price;
     private int quantity;
-    private Image image;
+    private String image;
     
-	public Shirt(String team, String league, int price, int quantity, Image image) {
+	public Shirt(String team, String league, int price, int quantity, String image) {
 		this.team = team;
 		this.league = league;
 		this.price = price;
@@ -21,6 +21,10 @@ public class Shirt {
 		this.image = image;
 	}
 	
+	public Shirt() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getTeam() {
 		return team;
 	}
@@ -53,11 +57,11 @@ public class Shirt {
 		this.quantity = quantity;
 	}
 
-	public Image getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Image image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
