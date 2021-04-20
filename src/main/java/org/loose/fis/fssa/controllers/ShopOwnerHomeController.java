@@ -148,6 +148,7 @@ public class ShopOwnerHomeController implements Initializable {
 	
     @FXML
     void handleRemoveShirts(ActionEvent event) {
+    	ShirtService.removeShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
     	afterMessage.setText("Removed shirt successfully");
     }
 	

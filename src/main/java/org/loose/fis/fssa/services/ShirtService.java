@@ -2,7 +2,9 @@ package org.loose.fis.fssa.services;
 
 
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.fssa.model.Shirt;
 import org.loose.fis.fssa.model.User;
@@ -20,6 +22,7 @@ public class ShirtService {
 
 	private static ObjectRepository<Shirt> shirtRepository;
 	
+	
 	private static int contorshirt=0;
 	
 	
@@ -28,7 +31,7 @@ public class ShirtService {
                 .filePath(getPathToFile("shirts-list.db").toFile())
                 .openOrCreate("test", "test");
 
-        shirtRepository = database.getRepository(Shirt.class);
+        shirtRepository = database.getRepository(Shirt.class);           
     }
 	
 	public static void addShirt(String team, String league, String price, String quantity, String image)  { 
@@ -52,6 +55,14 @@ public class ShirtService {
 		}
 	}
 
+	public static void removeShirt(String team, String league, String price, String quantity, String image) {
+		for (Shirt shirt : shirtRepository.find()) {
+			if(Objects.equals(team, shirt.getTeam()))
+				shirtRepository.remove(shirt);
+		}
+	}
+	
+	
 	
 	public static int getShirtNumber() {
         for (Shirt shirt : shirtRepository.find()) {
