@@ -3,6 +3,8 @@ package org.loose.fis.fssa.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.loose.fis.fssa.exceptions.BlankFieldsException;
+import org.loose.fis.fssa.exceptions.WrongFieldsException;
 import org.loose.fis.fssa.model.Shirt;
 import org.loose.fis.fssa.services.ShirtService;
 import org.loose.fis.fssa.services.UserService;
@@ -134,22 +136,48 @@ public class ShopOwnerHomeController implements Initializable {
 	
 	
 	@FXML
-    void handleAddShirts(ActionEvent event) {
+    void handleAddShirts(ActionEvent event) throws Exception {
+		try {
+		ShirtService.VerifyBlanks(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText());
 		ShirtService.addShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
 		afterMessage.setText("Added shirt successfully");
+		}
+		catch(BlankFieldsException e) {
+			afterMessage.setText(e.getMessage());
+		}
     }
 
     @FXML
-    void handleEditShirts(ActionEvent event) {
+    void handleEditShirts(ActionEvent event) throws Exception {
+    	try {
+    	ShirtService.VerifyBlanks(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText());
+    	ShirtService.VerifyWrongs(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText());
     	ShirtService.editShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
     	afterMessage.setText("Edited shirt successfully");
+    	}
+    	catch(BlankFieldsException e) {
+    		afterMessage.setText(e.getMessage());
+    	}
+    	catch(WrongFieldsException e) {
+    		afterMessage.setText(e.getMessage());
+    	}
     }
 	
 	
     @FXML
-    void handleRemoveShirts(ActionEvent event) {
+    void handleRemoveShirts(ActionEvent event) throws Exception {
+    	try {
+    	ShirtService.VerifyBlanks(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText());
+        ShirtService.VerifyWrongs(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText());	
     	ShirtService.removeShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
     	afterMessage.setText("Removed shirt successfully");
+    	}
+    	catch(BlankFieldsException e) {
+    		afterMessage.setText(e.getMessage());
+    	}
+    	catch(WrongFieldsException e) {
+    		afterMessage.setText(e.getMessage());
+    	}
     }
 	
 	

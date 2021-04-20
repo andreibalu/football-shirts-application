@@ -5,7 +5,10 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+import org.loose.fis.fssa.exceptions.BlankFieldsException;
+import org.loose.fis.fssa.exceptions.InvalidCredentialsException;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.fssa.exceptions.WrongFieldsException;
 import org.loose.fis.fssa.model.Shirt;
 import org.loose.fis.fssa.model.User;
 
@@ -61,6 +64,37 @@ public class ShirtService {
 				shirtRepository.remove(shirt);
 		}
 	}
+	
+	
+	
+	public static void checkBlankFieldsException(String team, String league, String price, String quantity, String image) throws BlankFieldsException{
+		if(team.isBlank() || league.isBlank() || price.isBlank() || quantity.isBlank() || image.isBlank())
+			throw new BlankFieldsException();
+	}
+	
+	public static void VerifyBlanks(String team, String league, String price, String quantity, String image) throws BlankFieldsException {
+		checkBlankFieldsException(team,league,price,quantity,image);
+	}
+	
+	public static void checkWrongFieldsException(String team, String league, String price, String quantity, String image) throws WrongFieldsException{
+		int contor=0;
+    	for(Shirt shirt : shirtRepository.find()) {
+    		if(Objects.equals(team,shirt.getTeam()))
+    		{
+    				contor++;
+    		}
+    	}
+    	if(contor==0)
+    	{
+    		throw new WrongFieldsException();
+    	}
+	}
+	
+	public static void VerifyWrongs(String team, String league, String price, String quantity, String image) throws WrongFieldsException{
+		checkWrongFieldsException(team,league,price,quantity,image);
+	}
+	
+	
 	
 	
 	
