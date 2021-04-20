@@ -5,8 +5,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.ShopOwnerHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.ShopOwnerHomeController">
    <children>
       <Button fx:id="Logout" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="48.0" prefWidth="70.0" text="Logout" />
       <AnchorPane prefHeight="570.0" prefWidth="259.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@../styles/shopownerhomestyle.css">
@@ -19,6 +21,7 @@
             <TextField fx:id="priceField" layoutX="56.0" layoutY="131.0" promptText="Price" />
             <TextField fx:id="quantityField" layoutX="55.0" layoutY="193.0" promptText="Quantity" />
             <TextField fx:id="imageField" layoutX="56.0" layoutY="252.0" promptText="Image" />
+            <Button fx:id="refreshButton" layoutX="95.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleRefreshTable" prefHeight="48.0" prefWidth="89.0" stylesheets="@../styles/shopownerhomestyle.css" text="Refresh table" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
       <TableView fx:id="tableShirts" layoutX="258.0" layoutY="100.0" prefHeight="469.0" prefWidth="639.0">
@@ -30,5 +33,9 @@
             <TableColumn fx:id="col_image" prefWidth="209.0" text="Image" />
         </columns>
       </TableView>
+      <Text fx:id="afterMessage" layoutX="292.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.0">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
    </children>
 </AnchorPane>

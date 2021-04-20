@@ -21,9 +21,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ShopOwnerHomeController implements Initializable {
+	
+	
+	@FXML
+    private Text afterMessage;
 
 	@FXML
     private Button Logout;
@@ -36,6 +41,9 @@ public class ShopOwnerHomeController implements Initializable {
 
 	@FXML
 	private Button removeButton;
+	
+	@FXML
+	private Button refreshButton;
 
     @FXML
     private TextField teamField;
@@ -74,7 +82,7 @@ public class ShopOwnerHomeController implements Initializable {
     
     ObservableList<Shirt> list=  FXCollections.observableArrayList();
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {   
     	
     	col_team.setCellValueFactory(new PropertyValueFactory<Shirt,String>("team"));
     	col_league.setCellValueFactory(new PropertyValueFactory<Shirt,String>("league"));
@@ -101,21 +109,46 @@ public class ShopOwnerHomeController implements Initializable {
 	     primaryStage.show();
     }
 	
+	@FXML
+	void handleRefreshTable(ActionEvent event) {
+		
+		tableShirts.getItems().clear();
+		
+		col_team.setCellValueFactory(new PropertyValueFactory<Shirt,String>("team"));
+    	col_league.setCellValueFactory(new PropertyValueFactory<Shirt,String>("league"));
+    	col_price.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("price"));
+    	col_quantity.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("quantity"));
+    	col_image.setCellValueFactory(new PropertyValueFactory<Shirt,String>("image"));
+    	
+    	contor=ShirtService.getShirtNumber();
+    	for(int i=1;i<=contor;i++) {
+    		Shirt shirt=new Shirt();
+    		shirt= ShirtService.returnShirt(i);
+    		list.add(shirt);
+    	}
+    	
+    	tableShirts.setItems(list);
+		
+    	
+	}
+	
 	
 	@FXML
     void handleAddShirts(ActionEvent event) {
 		ShirtService.addShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
+		afterMessage.setText("Added shirt successfully");
     }
 
     @FXML
     void handleEditShirts(ActionEvent event) {
-
+    	ShirtService.editShirt(teamField.getText(), leagueField.getText(), priceField.getText(),quantityField.getText(), imageField.getText() );
+    	afterMessage.setText("Edited shirt successfully");
     }
 	
 	
     @FXML
     void handleRemoveShirts(ActionEvent event) {
-
+    	afterMessage.setText("Removed shirt successfully");
     }
 	
 	

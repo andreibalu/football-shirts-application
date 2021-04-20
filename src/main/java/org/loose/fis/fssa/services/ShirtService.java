@@ -37,6 +37,20 @@ public class ShirtService {
 		
         shirtRepository.insert(new Shirt(team, league,pr, qu, image));
     }
+	
+	public static void editShirt(String team, String league, String price, String quantity, String image) {
+		int pr=Integer.parseInt(price);
+		int qu=Integer.parseInt(quantity);
+		for (Shirt shirt : shirtRepository.find()) {
+        	if(Objects.equals(team, shirt.getTeam())) {
+        		shirt.setLeague(league);
+        		shirt.setPrice(pr);
+        		shirt.setQuantity(qu);
+        		shirt.setImage(image);
+        		}
+        	shirtRepository.update(shirt);
+		}
+	}
 
 	
 	public static int getShirtNumber() {
