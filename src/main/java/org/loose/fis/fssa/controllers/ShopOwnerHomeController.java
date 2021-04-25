@@ -130,11 +130,7 @@ public class ShopOwnerHomeController implements Initializable {
     	}
     	
     	tableShirts.setItems(list);
-		
-    	
-	}
-	
-	
+	}	
 	@FXML
     void handleAddShirts(ActionEvent event) throws Exception {
 		try {

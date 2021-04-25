@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="234.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.ItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="21.0" layoutY="14.0" prefHeight="234.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="61.0" prefWidth="297.0">
+               <children>
+                  <Label fx:id="teamLabel" prefHeight="52.0" prefWidth="130.0" text="Echipa" />
+                  <Label fx:id="leagueLabel" prefHeight="57.0" prefWidth="142.0" text="Liga" />
+                  <Label fx:id="priceLabel" prefHeight="58.0" prefWidth="81.0" text="Pret" />
+               </children>
+            </HBox>
+            <ImageView fx:id="imageLabel" fitHeight="172.0" fitWidth="328.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lvp.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
