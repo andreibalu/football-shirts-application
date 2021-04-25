@@ -1,5 +1,6 @@
 package org.loose.fis.fssa.controllers;
 
+import org.loose.fis.fssa.Main;
 import org.loose.fis.fssa.model.Shirt;
 
 import javafx.fxml.FXML;
@@ -28,9 +29,8 @@ public class ItemController {
 		 this.shirt=shirt;
 		 teamLabel.setText(shirt.getTeam());
 		 leagueLabel.setText(shirt.getLeague());
-		 priceLabel.setText(String.valueOf(shirt.getPrice()));
+		 priceLabel.setText(Main.moneda+String.valueOf(shirt.getPrice()));
 		 Image image=new Image(getClass().getResourceAsStream(shirt.getImage()));
 		 imageLabel.setImage(image);
 	 }
-	 
 }
