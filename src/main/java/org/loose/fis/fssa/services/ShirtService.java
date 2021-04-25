@@ -94,10 +94,6 @@ public class ShirtService {
 		checkWrongFieldsException(team,league,price,quantity,image);
 	}
 	
-	
-	
-	
-	
 	public static int getShirtNumber() {
         for (Shirt shirt : shirtRepository.find()) {
             	contorshirt++;

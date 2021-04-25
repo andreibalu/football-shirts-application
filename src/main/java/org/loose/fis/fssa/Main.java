@@ -16,7 +16,7 @@ import java.nio.file.Path;
 
 
 public class Main extends Application {
-
+   public static final String moneda="$";
     @Override
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
