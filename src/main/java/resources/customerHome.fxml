@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1000.0" stylesheets="@../styles/shopownerhomestyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
    <children>
       <AnchorPane layoutX="-31.0" layoutY="-9.0" prefHeight="587.0" prefWidth="238.0" styleClass="sidebar" stylesheets="@../styles/customerhome.css" />
-      <Button fx:id="Logout" layoutX="881.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleLogoutAction" text="Logout" />
+      <Button fx:id="Logout" layoutX="881.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="66.0" styleClass="Logout" stylesheets="@../styles/customerhome.css" text="Logout" />
       <HBox alignment="CENTER" layoutX="212.0" layoutY="89.0" prefHeight="486.0" prefWidth="781.0">
          <children>
             <ScrollPane fx:id="scroll" prefHeight="486.0" prefWidth="797.0" HBox.hgrow="ALWAYS">

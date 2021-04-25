@@ -44,7 +44,7 @@ public void handleLoginAction() throws Exception {
    if(rol.equals("Shop Owner"))
    {
 	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/shopownerHome.fxml"));
-       primaryStage.setTitle("Shop Owner");
+       primaryStage.setTitle("Shop Owner Home");
        primaryStage.setScene(new Scene(root, 900, 600));
        primaryStage.show();
    }
