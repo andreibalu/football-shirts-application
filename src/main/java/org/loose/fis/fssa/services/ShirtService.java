@@ -40,7 +40,6 @@ public class ShirtService {
 	public static void addShirt(String team, String league, String price, String quantity, String image)  { 
 		int pr=Integer.parseInt(price);
 		int qu=Integer.parseInt(quantity);
-		
         shirtRepository.insert(new Shirt(team, league,pr, qu, image));
     }
 	
@@ -95,6 +94,7 @@ public class ShirtService {
 	}
 	
 	public static int getShirtNumber() {
+		contorshirt=0;
         for (Shirt shirt : shirtRepository.find()) {
             	contorshirt++;
         }

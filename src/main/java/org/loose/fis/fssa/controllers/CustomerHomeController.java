@@ -21,7 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-public class CustomerHomeController implements Initializable {
+public class CustomerHomeController  {
 
 	  @FXML
 	    private Button Logout;
@@ -43,8 +43,8 @@ public class CustomerHomeController implements Initializable {
 		     primaryStage.show();
 	    }
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	@FXML
+	public void initialize() {
 		contor=ShirtService.getShirtNumber();
 		int coloana=0;
 		int linie=0;
