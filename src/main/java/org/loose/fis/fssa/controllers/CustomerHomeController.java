@@ -5,7 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.loose.fis.fssa.model.Shirt;
+import org.loose.fis.fssa.model.ShirtListener;
+import org.loose.fis.fssa.services.ShirtCartService;
 import org.loose.fis.fssa.services.ShirtService;
+import org.loose.fis.fssa.Main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +18,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -27,26 +33,42 @@ public class CustomerHomeController  {
 
 	 @FXML
 	 private VBox selectedShirt;
+	 
+	 @FXML
+	 private Label SelectedShirtLabel;
+
+	 @FXML
+	 private Label SelectedPriceLabel;
+	 
+	 @FXML
+	 private Label currencyLabel;
+
+	 @FXML
+	 private ImageView SelectedShirtImage;
 
 	 @FXML
 	 private TextField selectedQuantity;
 	 
-	  @FXML
-	  private Button Logout;
+	 @FXML
+	 private Button Logout;
 	  
-	  @FXML
-	  private ScrollPane scroll;
+	 @FXML
+	 private ScrollPane scroll;
 
-	  @FXML
-	  private GridPane grid;
+	 @FXML
+	 private GridPane grid;
 	  
-	  @FXML
-	  private TextField enteredName;
+	 @FXML
+	 private TextField enteredName;
 
-	  @FXML
-	  private TextField enteredCountry;
+	 @FXML
+	 private TextField enteredCountry;
 	  
-	  private int contor;
+	 private int contor;
+	 
+	 private Image image;
+	 
+	 private ShirtListener listener;
 
 	   @FXML
 	   void handleLogoutAction(ActionEvent event) throws Exception{
@@ -59,7 +81,7 @@ public class CustomerHomeController  {
 	   
 	   @FXML
 	    void handleAddToCart(ActionEvent event) {
-          //todo
+          ShirtCartService.addShirtToCart(SelectedShirtLabel.getText(),SelectedPriceLabel.getText(),selectedQuantity.getText());
 	    }
 	   
 	   @FXML
@@ -67,11 +89,29 @@ public class CustomerHomeController  {
          //todo
 	    }
 
-	   
+	private void setSelectedShirt(Shirt shirt)
+	{
+		SelectedShirtLabel.setText(shirt.getTeam());
+		currencyLabel.setText(Main.moneda);
+		SelectedPriceLabel.setText(String.valueOf(shirt.getPrice()));
+		image=new Image(getClass().getResourceAsStream(shirt.getImage()));
+		SelectedShirtImage.setImage(image);		
+	}
 
 	@FXML
 	public void initialize() {
 		contor=ShirtService.getShirtNumber();
+		if(contor>0)
+		{
+			listener=new ShirtListener() {
+				@Override
+				public void onClickListener(Shirt shirt)
+				{
+					setSelectedShirt(shirt);
+				}
+			};
+			
+		}
 		int coloana=0;
 		int linie=0;
 		try {
@@ -84,7 +124,7 @@ public class CustomerHomeController  {
 			ItemController itemcontroller=fxmlloader.getController();
 			Shirt shirt=new Shirt();
 			shirt=ShirtService.returnShirt(i);
-			itemcontroller.setInfo(shirt);
+			itemcontroller.setInfo(shirt,listener);
 			if(coloana==2)
 			{
 				coloana=0;
