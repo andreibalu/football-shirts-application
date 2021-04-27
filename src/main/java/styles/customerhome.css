@@ -15,3 +15,10 @@
 	-fx-background-color:#ffffff;
 	-fx-border-color:black;
 }
+.selected-shirt{
+	-fx-background-color:#ffffff;
+	-fx-background-radius:25;
+}
+.quantity-field{
+	-fx-border-color:black;
+}

@@ -16,21 +16,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CustomerHomeController  {
 
+	 @FXML
+	 private VBox selectedShirt;
+
+	 @FXML
+	 private TextField selectedQuantity;
+	 
 	  @FXML
-	    private Button Logout;
+	  private Button Logout;
 	  
 	  @FXML
 	  private ScrollPane scroll;
 
 	  @FXML
 	  private GridPane grid;
+	  
+	  @FXML
+	  private TextField enteredName;
+
+	  @FXML
+	  private TextField enteredCountry;
 	  
 	  private int contor;
 
@@ -42,6 +56,18 @@ public class CustomerHomeController  {
 		     primaryStage.setScene(new Scene(root, 400, 300));
 		     primaryStage.show();
 	    }
+	   
+	   @FXML
+	    void handleAddToCart(ActionEvent event) {
+          //todo
+	    }
+	   
+	   @FXML
+	    void handlePlaceOrder(ActionEvent event) {
+         //todo
+	    }
+
+	   
 
 	@FXML
 	public void initialize() {
