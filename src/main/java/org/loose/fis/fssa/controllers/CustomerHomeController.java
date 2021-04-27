@@ -10,6 +10,7 @@ import org.loose.fis.fssa.services.OrderService;
 import org.loose.fis.fssa.services.ShirtCartService;
 import org.loose.fis.fssa.services.ShirtService;
 import org.loose.fis.fssa.Main;
+import org.loose.fis.fssa.exceptions.NotEnoughStockException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -88,11 +89,18 @@ public class CustomerHomeController  {
 	    }
 	   
 	   @FXML
-	    void handleAddToCart(ActionEvent event) {
-		   
+	    void handleAddToCart(ActionEvent event) throws Exception {
+		   try {
+		   int qu=0;
+		   qu=Integer.parseInt(selectedQuantity.getText());
+		   ShirtService.VerifyStock(SelectedShirtLabel.getText(), qu);
           ShirtCartService.addShirtToCart(SelectedShirtLabel.getText(),SelectedPriceLabel.getText(),selectedQuantity.getText());
           addtocartmessage.setText("Added shirt succesfully to cart");
-	    }
+	    }catch(NotEnoughStockException e)
+		   {
+	    	addtocartmessage.setText(e.getMessage());
+		   }
+	   }
 	   
 	   @FXML
 	    void handlePlaceOrder(ActionEvent event) {
