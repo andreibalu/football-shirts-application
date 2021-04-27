@@ -7,6 +7,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.fssa.exceptions.BlankFieldsException;
 import org.loose.fis.fssa.exceptions.InvalidCredentialsException;
+import org.loose.fis.fssa.exceptions.NotEnoughStockException;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.fssa.exceptions.WrongFieldsException;
 import org.loose.fis.fssa.model.Shirt;
@@ -40,7 +41,6 @@ public class ShirtService {
 	public static void addShirt(String team, String league, String price, String quantity, String image)  { 
 		int pr=Integer.parseInt(price);
 		int qu=Integer.parseInt(quantity);
-		
         shirtRepository.insert(new Shirt(team, league,pr, qu, image));
     }
 	
@@ -64,8 +64,6 @@ public class ShirtService {
 				shirtRepository.remove(shirt);
 		}
 	}
-	
-	
 	
 	public static void checkBlankFieldsException(String team, String league, String price, String quantity, String image) throws BlankFieldsException{
 		if(team.isBlank() || league.isBlank() || price.isBlank() || quantity.isBlank() || image.isBlank())
@@ -93,8 +91,26 @@ public class ShirtService {
 	public static void VerifyWrongs(String team, String league, String price, String quantity, String image) throws WrongFieldsException{
 		checkWrongFieldsException(team,league,price,quantity,image);
 	}
-	
+	public static void checkNotEnoughStockException(String team, int quantity) throws NotEnoughStockException
+	{
+		int qu=0;
+		for(Shirt shirt : shirtRepository.find())
+		{
+			if(Objects.equals(team,shirt.getTeam()))
+			{
+				qu=shirt.getQuantity();
+			}
+		}
+		if(quantity>qu)
+		{
+			throw new NotEnoughStockException(qu);
+		}
+	}
+	public static void VerifyStock(String team,int quantity) throws NotEnoughStockException{
+		checkNotEnoughStockException(team,quantity);
+	}
 	public static int getShirtNumber() {
+		contorshirt=0;
         for (Shirt shirt : shirtRepository.find()) {
             	contorshirt++;
         }

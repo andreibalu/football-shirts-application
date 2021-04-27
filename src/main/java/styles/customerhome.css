@@ -10,3 +10,15 @@
 	-fx-background-color: #FFFFFF;
         -fx-background-radius: 30;
 }
+.Logout{
+	-fx-pref-width: 70px;
+	-fx-background-color:#ffffff;
+	-fx-border-color:black;
+}
+.selected-shirt{
+	-fx-background-color:#ffffff;
+	-fx-background-radius:25;
+}
+.quantity-field{
+	-fx-border-color:black;
+}

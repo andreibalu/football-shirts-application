@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ShopOwnerHomeController implements Initializable {
+public class ShopOwnerHomeController {
 	
 	
 	@FXML
@@ -83,15 +83,15 @@ public class ShopOwnerHomeController implements Initializable {
     private int contor;
     
     ObservableList<Shirt> list=  FXCollections.observableArrayList();
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {   
+    
+    @FXML
+    public void initialize() {   
     	
     	col_team.setCellValueFactory(new PropertyValueFactory<Shirt,String>("team"));
     	col_league.setCellValueFactory(new PropertyValueFactory<Shirt,String>("league"));
     	col_price.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("price"));
     	col_quantity.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("quantity"));
     	col_image.setCellValueFactory(new PropertyValueFactory<Shirt,String>("image"));
-    	
     	contor=ShirtService.getShirtNumber();
     	for(int i=1;i<=contor;i++) {
     		Shirt shirt=new Shirt();
@@ -115,13 +115,11 @@ public class ShopOwnerHomeController implements Initializable {
 	void handleRefreshTable(ActionEvent event) {
 		
 		tableShirts.getItems().clear();
-		
 		col_team.setCellValueFactory(new PropertyValueFactory<Shirt,String>("team"));
     	col_league.setCellValueFactory(new PropertyValueFactory<Shirt,String>("league"));
     	col_price.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("price"));
     	col_quantity.setCellValueFactory(new PropertyValueFactory<Shirt,Integer>("quantity"));
     	col_image.setCellValueFactory(new PropertyValueFactory<Shirt,String>("image"));
-    	
     	contor=ShirtService.getShirtNumber();
     	for(int i=1;i<=contor;i++) {
     		Shirt shirt=new Shirt();
