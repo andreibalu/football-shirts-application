@@ -29,10 +29,24 @@ public class ShirtCartService {
 	}
 	public static void removeShirtsFromCart()
 	{
-		for(CartShirt cartshirt : shirtcartRepository.find())
-		{
-			shirtcartRepository.remove(cartshirt);
+		
+			shirtcartRepository.remove(ObjectFilters.ALL);
+	}
+	public static String getTeamQuantityForOrder()
+	{
+		String st="";
+		for(CartShirt cartshirt : shirtcartRepository.find()) {
+			st=st+cartshirt.getTeam()+"-"+String.valueOf(cartshirt.getQuantity())+",";
 		}
+		return st;
+	}
+	public static int getTotalPriceForOrder()
+	{
+		int pr=0;
+		for(CartShirt cartshirt : shirtcartRepository.find()) {
+			pr=pr+cartshirt.getPrice();
+		}
+		return pr;
 	}
 
 }

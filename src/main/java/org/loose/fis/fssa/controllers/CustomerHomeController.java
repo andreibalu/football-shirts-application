@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import org.loose.fis.fssa.model.Shirt;
 import org.loose.fis.fssa.model.ShirtListener;
+import org.loose.fis.fssa.services.OrderService;
 import org.loose.fis.fssa.services.ShirtCartService;
 import org.loose.fis.fssa.services.ShirtService;
 import org.loose.fis.fssa.Main;
@@ -27,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class CustomerHomeController  {
@@ -50,6 +52,9 @@ public class CustomerHomeController  {
 	 private TextField selectedQuantity;
 	 
 	 @FXML
+	 private Text addtocartmessage;
+	 
+	 @FXML
 	 private Button Logout;
 	  
 	 @FXML
@@ -63,6 +68,9 @@ public class CustomerHomeController  {
 
 	 @FXML
 	 private TextField enteredCountry;
+	 
+	 @FXML
+	 private Text ordermessage;
 	  
 	 private int contor;
 	 
@@ -81,12 +89,20 @@ public class CustomerHomeController  {
 	   
 	   @FXML
 	    void handleAddToCart(ActionEvent event) {
+		   
           ShirtCartService.addShirtToCart(SelectedShirtLabel.getText(),SelectedPriceLabel.getText(),selectedQuantity.getText());
+          addtocartmessage.setText("Added shirt succesfully to cart");
 	    }
 	   
 	   @FXML
 	    void handlePlaceOrder(ActionEvent event) {
-         //todo
+         String team_quantity;
+         int total_price;
+        team_quantity=ShirtCartService.getTeamQuantityForOrder();
+        total_price=ShirtCartService.getTotalPriceForOrder();
+        OrderService.addOrdertoDatabase(team_quantity, String.valueOf(total_price),enteredName.getText(),enteredCountry.getText());
+        ShirtCartService.removeShirtsFromCart();
+        ordermessage.setText("Order placed succesfully!");
 	    }
 
 	private void setSelectedShirt(Shirt shirt)
@@ -143,6 +159,5 @@ public class CustomerHomeController  {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	   
+	}   
 }

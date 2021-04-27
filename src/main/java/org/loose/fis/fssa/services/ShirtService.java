@@ -112,5 +112,16 @@ public class ShirtService {
         }
         return null;
     }
+	public static int getQuantity(String team)
+	{
+		int qu=0;
+		for (Shirt shirt : shirtRepository.find()) {
+			if(Objects.equals(team,shirt.getTeam()))
+    		{
+    				qu=shirt.getQuantity();
+    		}
+    }
+		return qu;
+	}
 	
 }

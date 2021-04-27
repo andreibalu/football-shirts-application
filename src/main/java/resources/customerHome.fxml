@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1081.0" stylesheets="@../styles/shopownerhomestyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
    <children>
@@ -53,11 +54,18 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#handleAddToCart" prefHeight="59.0" prefWidth="150.0" text="Add to cart" wrapText="true">
+                  <Button mnemonicParsing="false" onAction="#handleAddToCart" prefHeight="59.0" prefWidth="132.0" text="Add to cart" wrapText="true">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
                   </Button>
+                  <Text fx:id="addtocartmessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin></Text>
                </children>
             </VBox>
          </children></AnchorPane>
@@ -92,6 +100,14 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
+            <Text fx:id="ordermessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="34.13671875">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </HBox>
    </children>
