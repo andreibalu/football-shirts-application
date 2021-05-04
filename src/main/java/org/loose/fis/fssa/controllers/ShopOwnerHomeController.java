@@ -80,6 +80,9 @@ public class ShopOwnerHomeController {
     @FXML
     private TableColumn<Shirt, String> col_image;
     
+    @FXML
+    private Button Order;
+    
     private int contor;
     
     ObservableList<Shirt> list=  FXCollections.observableArrayList();
@@ -176,9 +179,14 @@ public class ShopOwnerHomeController {
 	
 	
 	
-	
-	
-	
+    @FXML
+    void handleGoToOrder(ActionEvent event) throws Exception {
+    	Stage primaryStage=(Stage)Logout.getScene().getWindow();
+		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/ordersPage.fxml"));
+	     primaryStage.setTitle("Orders Page");
+	     primaryStage.setScene(new Scene(root, 900, 600));
+	     primaryStage.show();
+    }
 	
 	
 	
