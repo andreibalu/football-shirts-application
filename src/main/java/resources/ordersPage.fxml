@@ -9,7 +9,7 @@
    <children>
       <Button fx:id="Logout" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="48.0" prefWidth="70.0" stylesheets="@../styles/shopownerhomestyle.css" text="Logout" textAlignment="CENTER" />
       <AnchorPane prefHeight="570.0" prefWidth="202.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@../styles/shopownerhomestyle.css" />
-      <TableView fx:id="tableShirts" layoutX="202.0" layoutY="100.0" prefHeight="469.0" prefWidth="695.0">
+      <TableView fx:id="tableOrders" layoutX="202.0" layoutY="100.0" prefHeight="469.0" prefWidth="695.0">
         <columns>
           <TableColumn fx:id="col_teamquantity" prefWidth="281.0" text="Team &amp; Quantity" />
           <TableColumn fx:id="col_totalPrice" minWidth="0.0" prefWidth="67.0" text="Total Price" />
