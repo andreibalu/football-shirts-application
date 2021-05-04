@@ -100,7 +100,7 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Text fx:id="ordermessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="34.13671875">
+            <Text fx:id="ordermessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="335.13671875">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
