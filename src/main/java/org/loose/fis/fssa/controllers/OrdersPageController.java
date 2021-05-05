@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -62,10 +63,11 @@ public class OrdersPageController {
     @FXML
     private Button refresh;
 
-    
-
     @FXML
     private Button HomePage;
+    
+    @FXML
+    private TextArea denialReason;
     
     private int contor;
     
@@ -89,6 +91,26 @@ public class OrdersPageController {
         tableOrders.setItems(list);
     }
     
+    @FXML
+    void handleRefreshTable(ActionEvent event) {
+    	
+    	tableOrders.getItems().clear();
+    	col_teamquantity.setCellValueFactory(new PropertyValueFactory<Order,String>("team_quantity"));
+        col_totalPrice.setCellValueFactory(new PropertyValueFactory<Order,Integer>("total_price"));
+        col_name.setCellValueFactory(new PropertyValueFactory<Order,String>("customer_name"));
+        col_country.setCellValueFactory(new PropertyValueFactory<Order,String>("customer_Country"));
+        
+        contor=OrderService.getOrderNumber();
+        for(int i=1;i<=contor;i++) {
+            Order order=new Order();
+            order= OrderService.returnOrder(i);
+            list.add(order);
+        }
+        
+        tableOrders.setItems(list);
+    	
+    }
+    
 
     @FXML
     void handleGoToHomePage(ActionEvent event) throws Exception {
@@ -108,23 +130,6 @@ public class OrdersPageController {
 	     primaryStage.show();
     }
 	
-    
-    @FXML
-    void handleAcceptOrder(ActionEvent event) {
-    	
-    }
-
-    @FXML
-    void handleDenyOrder(ActionEvent event) {
-    	
-    }
-    
-    @FXML
-    void handleRefreshTable(ActionEvent event) {
-
-    }
-    
-    
     @FXML
     void clickOrder(MouseEvent event) {
     	if(event.getClickCount()==1) {
@@ -134,6 +139,31 @@ public class OrdersPageController {
     		selectedCountry.setText(col_country.getCellData(idx));
     	}
     }
+    
+    
+    @FXML
+    void handleAcceptOrder(ActionEvent event) {
+    	
+    	OrderService.acceptOrder(selectedName.getText(), selectedCountry.getText());
+    	messageAfter.setText("Order was accepted successfully !");
+    }
+
+    @FXML
+    void handleDenyOrder(ActionEvent event) {
+    	OrderService.denyOrder(selectedName.getText(), selectedCountry.getText());
+    	messageAfter.setText("Order was denied successfully !");
+    	denialReason.clear();
+    	
+    	
+    	
+    }
+    
+    
+    
+   
+    
+    
+    
     
 
 }

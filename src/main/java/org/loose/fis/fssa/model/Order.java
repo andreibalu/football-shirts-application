@@ -1,6 +1,9 @@
 package org.loose.fis.fssa.model;
 
+import org.dizitart.no2.objects.Id;
+
 public class Order {
+  @Id
   public String team_quantity;
   public int total_price;
   public String customer_name;
