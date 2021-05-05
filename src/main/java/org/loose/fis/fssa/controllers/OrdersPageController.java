@@ -24,6 +24,12 @@ public class OrdersPageController {
 	
 	
 	@FXML
+    private Button Accept;
+
+    @FXML
+    private Button Deny;
+	
+	@FXML
     private Button Logout;
 
     @FXML
@@ -88,5 +94,17 @@ public class OrdersPageController {
 	     primaryStage.show();
     }
 	
+    
+    @FXML
+    void handleAcceptOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleDenyOrder(ActionEvent event) {
+
+    }
+    
+    
 
 }
