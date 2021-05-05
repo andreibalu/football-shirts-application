@@ -17,7 +17,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class OrdersPageController {
@@ -47,7 +50,18 @@ public class OrdersPageController {
     @FXML
     private TableColumn<Order, String> col_country;
 
+    @FXML
+    private TextField selectedName;
+
+    @FXML
+    private TextField selectedCountry;
     
+    @FXML
+    private Text messageAfter;
+
+    @FXML
+    private Button refresh;
+
     
 
     @FXML
@@ -97,14 +111,29 @@ public class OrdersPageController {
     
     @FXML
     void handleAcceptOrder(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void handleDenyOrder(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void handleRefreshTable(ActionEvent event) {
 
     }
     
+    
+    @FXML
+    void clickOrder(MouseEvent event) {
+    	if(event.getClickCount()==1) {
+    		int idx=0;
+    		idx=tableOrders.getSelectionModel().getSelectedIndex();
+    		selectedName.setText(col_name.getCellData(idx));
+    		selectedCountry.setText(col_country.getCellData(idx));
+    	}
+    }
     
 
 }
