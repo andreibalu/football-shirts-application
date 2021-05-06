@@ -3,13 +3,28 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.OrdersPageController">
    <children>
       <Button fx:id="Logout" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="48.0" prefWidth="70.0" stylesheets="@../styles/shopownerhomestyle.css" text="Logout" textAlignment="CENTER" />
-      <AnchorPane prefHeight="570.0" prefWidth="202.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@../styles/shopownerhomestyle.css" />
-      <TableView fx:id="tableOrders" layoutX="202.0" layoutY="100.0" prefHeight="469.0" prefWidth="695.0">
+      <AnchorPane prefHeight="570.0" prefWidth="202.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@../styles/shopownerhomestyle.css">
+         <children>
+            <Button fx:id="Accept" layoutX="28.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleAcceptOrder" prefHeight="48.0" prefWidth="110.0" text="Accept order" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="Deny" layoutX="105.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleDenyOrder" prefHeight="48.0" text="Deny order" textAlignment="CENTER" wrapText="true" />
+            <Text layoutX="48.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected order details" />
+            <TextField fx:id="selectedName" layoutX="31.0" layoutY="82.0" promptText="Customer name" />
+            <Text layoutX="92.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+            <TextField fx:id="selectedCountry" layoutX="31.0" layoutY="164.0" promptText="Country" />
+            <Button fx:id="refresh" layoutX="62.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleRefreshTable" prefHeight="48.0" prefWidth="100.0" text="Refresh table" textAlignment="CENTER" wrapText="true" />
+            <TextArea fx:id="denialReason" layoutX="8.0" layoutY="322.0" prefHeight="80.0" prefWidth="186.0" text="&#10;" />
+            <Text layoutX="55.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reason for denial:" />
+         </children></AnchorPane>
+      <TableView fx:id="tableOrders" layoutX="202.0" layoutY="100.0" onMouseClicked="#clickOrder" prefHeight="469.0" prefWidth="695.0">
         <columns>
           <TableColumn fx:id="col_teamquantity" prefWidth="281.0" text="Team &amp; Quantity" />
           <TableColumn fx:id="col_totalPrice" minWidth="0.0" prefWidth="67.0" text="Total Price" />
@@ -18,5 +33,10 @@
         </columns>
       </TableView>
       <Button fx:id="HomePage" layoutX="731.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleGoToHomePage" prefHeight="48.0" prefWidth="86.0" stylesheets="@../styles/shopownerhomestyle.css" text="Home Page" textAlignment="CENTER" wrapText="true" />
+      <Text fx:id="messageAfter" layoutX="229.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="471.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

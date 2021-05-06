@@ -2,6 +2,8 @@ package org.loose.fis.fssa.services;
 
 import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
 
+import java.util.Objects;
+
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -34,6 +36,20 @@ public class OrderService {
         }
         return contororder;
     }
+	
+	public static void acceptOrder(String name, String country) {
+		for (Order order : orderRepository.find()) {
+			if(Objects.equals(name, order.getCustomer_name()) && Objects.equals(country,order.getCustomer_Country()))
+				orderRepository.remove(order);
+		}
+	}
+	
+	public static void denyOrder(String name, String country) {
+		for (Order order : orderRepository.find()) {
+			if(Objects.equals(name, order.getCustomer_name()) && Objects.equals(country,order.getCustomer_Country()))
+				orderRepository.remove(order);
+		}
+	}
 	
 	private static int y=0;
 	public static Order returnOrder(int i)  {

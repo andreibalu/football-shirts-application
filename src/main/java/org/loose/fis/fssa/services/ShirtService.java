@@ -57,12 +57,34 @@ public class ShirtService {
         	shirtRepository.update(shirt);
 		}
 	}
+	
+	
 
 	public static void removeShirt(String team, String league, String price, String quantity, String image) {
 		for (Shirt shirt : shirtRepository.find()) {
 			if(Objects.equals(team, shirt.getTeam()))
 				shirtRepository.remove(shirt);
 		}
+	}
+	
+	public static void removeQuantity(String team, int qu) {
+		for (Shirt shirt : shirtRepository.find()) {
+			int quanti=shirt.getQuantity();
+			if(Objects.equals(team, shirt.getTeam()))
+				shirt.setQuantity(quanti-qu);
+			shirtRepository.update(shirt);
+		}
+		
+	}
+	
+	public static void restoreQuantity(String team, int qu) {
+		for (Shirt shirt : shirtRepository.find()) {
+			int quanti=shirt.getQuantity();
+			if(Objects.equals(team, shirt.getTeam()))
+				shirt.setQuantity(qu+quanti);
+			shirtRepository.update(shirt);
+		}
+		
 	}
 	
 	public static void checkBlankFieldsException(String team, String league, String price, String quantity, String image) throws BlankFieldsException{
