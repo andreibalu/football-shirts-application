@@ -24,7 +24,7 @@
             <Button fx:id="refreshButton" layoutX="95.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleRefreshTable" prefHeight="48.0" prefWidth="89.0" stylesheets="@../styles/shopownerhomestyle.css" text="Refresh table" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
-      <TableView fx:id="tableShirts" layoutX="258.0" layoutY="100.0" prefHeight="469.0" prefWidth="639.0">
+      <TableView fx:id="tableShirts" layoutX="258.0" layoutY="100.0" onMouseClicked="#clickShirt" prefHeight="469.0" prefWidth="639.0">
         <columns>
           <TableColumn fx:id="col_team" prefWidth="152.0" text="Team" />
           <TableColumn fx:id="col_league" prefWidth="150.0" text="League" />

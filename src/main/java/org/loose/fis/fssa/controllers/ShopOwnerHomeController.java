@@ -23,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -105,6 +106,20 @@ public class ShopOwnerHomeController {
     	tableShirts.setItems(list);
     }
 	
+    @FXML
+    void clickShirt(MouseEvent event) {
+    	if(event.getClickCount()==1) {
+    		int idx=0;
+    		idx=tableShirts.getSelectionModel().getSelectedIndex();
+    		teamField.setText(col_team.getCellData(idx));  	
+    		leagueField.setText(col_league.getCellData(idx));
+    		priceField.setText(String.valueOf(col_price.getCellData(idx)));
+    		quantityField.setText(String.valueOf(col_quantity.getCellData(idx)));
+    		imageField.setText(col_image.getCellData(idx));
+    	}
+    }
+    
+    
 	@FXML
     void handleLogout(ActionEvent event) throws Exception {
 		Stage primaryStage=(Stage)Logout.getScene().getWindow();
@@ -187,4 +202,8 @@ public class ShopOwnerHomeController {
 	     primaryStage.setScene(new Scene(root, 900, 600));
 	     primaryStage.show();
     }
+   
+    
+    
+    
 }
