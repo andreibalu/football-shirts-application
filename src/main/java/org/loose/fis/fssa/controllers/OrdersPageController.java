@@ -71,6 +71,8 @@ public class OrdersPageController {
     
     private int contor;
     
+    private String s; 
+    
     ObservableList<Order> list=  FXCollections.observableArrayList();
     
     
@@ -137,6 +139,7 @@ public class OrdersPageController {
     		idx=tableOrders.getSelectionModel().getSelectedIndex();
     		selectedName.setText(col_name.getCellData(idx));
     		selectedCountry.setText(col_country.getCellData(idx));
+    		s=col_teamquantity.getCellData(idx);
     	}
     }
     
@@ -153,9 +156,34 @@ public class OrdersPageController {
     	OrderService.denyOrder(selectedName.getText(), selectedCountry.getText());
     	messageAfter.setText("Order was denied successfully !");
     	denialReason.clear();
-    	
-    	
-    	
+    	int i,j,cont=0;
+    	String aux="";
+    	String nume="";
+    	String cantitate="";
+    	int ok=0,cant=0;
+    	for(i=0; i<s.length();i++) {
+    		if(s.charAt(i)!=','){
+    			aux=aux+s.charAt(i);
+    		}
+    		else {
+    			for(j=0;j<aux.length();j++) {
+    				if(aux.charAt(j)!='-' && ok==0) {
+    					nume=nume+aux.charAt(j);
+    				}
+    				else {
+    					ok=1;
+    				}
+    				if(ok==1 && aux.charAt(j)!='-') {   					
+    					cantitate=cantitate+aux.charAt(j);
+    				}    				
+    			}
+    			ok=0;
+    			cant=Integer.parseInt(cantitate);
+    			System.out.println(cant + " " + nume);
+    			ShirtService.restoreQuantity(nume, cant);
+    			aux="";nume="";cantitate="";cant=0;
+    		}    			   		
+    	}  	   	    	
     }
     
     
