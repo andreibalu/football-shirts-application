@@ -1,4 +1,4 @@
-package org.loose.fis.fssa.services;
+package org.loose.fis.fssa;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +7,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.loose.fis.fssa.services.FileSystemService;
+import org.loose.fis.fssa.services.UserService;
 import org.testfx.api.FxRobot;
 import org.testfx.assertions.api.AbstractLabeledAssert;
 import org.testfx.assertions.api.ButtonAssert;
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
 
 class RegistrationTest {
 
-	 public static final String USERNAME = "owner boss";
+	public static final String USERNAME = "owner boss";
 	 public static final String PASSWORD = "password";
 	 
 	@AfterEach
@@ -37,16 +39,16 @@ class RegistrationTest {
 	void setUp() throws Exception{
 		FileSystemService.APPLICATION_FOLDER=".test-shirt-application";
 		FileSystemService.initDirectory();
-        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
-        UserService.initDatabase();
+       FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+       UserService.initDatabase();
 	}
 	
 	@Start
 	void start(Stage primaryStage) throws Exception {
-		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
-	     primaryStage.setTitle("Register");
-	     primaryStage.setScene(new Scene(root, 400, 300));
-	     primaryStage.show();
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
+        primaryStage.setTitle("Register");
+        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.show();
 	}
 	
 	@Test
@@ -75,11 +77,8 @@ class RegistrationTest {
 		assertThat(UserService.getAllUsers()).size().isEqualTo(2); //we add one more user, and verify that there are 2 users in the database
 		
 	}
-	
 	@Test
 	void testGoToLoginButton(FxRobot robot) {
 		robot.clickOn("#gotologinButton");
-		assertThat(robot.lookup("#title-text").queryText()).hasText("Football Shirts Shop Application Login");
-		//verifies that when clicking the go to login button, it opens the login window
 	}
 }

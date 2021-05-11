@@ -22,8 +22,8 @@ public class Main extends Application {
         ShirtService.initDatabase();
         OrderService.initDatabase();
         ShirtCartService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
-        primaryStage.setTitle("Login");
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
+        primaryStage.setTitle("Register");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
     }
