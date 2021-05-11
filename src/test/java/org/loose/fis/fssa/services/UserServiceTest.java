@@ -72,6 +72,16 @@ class UserServiceTest {
 	            UserService.addUser(ADMIN, ADMIN, ADMIN);
 	        });
 	    }
-	
+	 
+	 @Test
+	 @DisplayName("User can not enter invalid credentials when logging in")
+	 void testUserCanNotEnterInvalidCredentialsForLogin()
+	 {
+		 assertThrows(InvalidCredentialsException.class, () -> {
+			 UserService.addUser(ADMIN, ADMIN, ADMIN);
+			 UserService.verifyLogin("admin","admin1");
+		 });
+	 }
+	 
 	 
 }
