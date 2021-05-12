@@ -2,23 +2,33 @@ package org.loose.fis.fssa.services;
 
 import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
 
+import java.util.List;
+import java.util.function.IntPredicate;
+
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.fssa.model.CartShirt;
+import org.loose.fis.fssa.model.Order;
 import org.loose.fis.fssa.model.Shirt;
 
 public class ShirtCartService {
 	
+	private static Nitrite database;
+	
 	private static ObjectRepository<CartShirt> shirtcartRepository;
 	
 	public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("shirts-cart.db").toFile())
                 .openOrCreate("test", "test");
 
         shirtcartRepository = database.getRepository(CartShirt.class);         
+    }
+	
+	public static List<CartShirt> getAllShirtsInCart() {
+        return shirtcartRepository.find().toList();
     }
 	
 	public static void addShirtToCart(String team,String price,String quantity)
@@ -47,6 +57,12 @@ public class ShirtCartService {
 			pr=pr+cartshirt.getPrice();
 		}
 		return pr;
+	}
+
+	
+	public static Nitrite getDatabase()
+	{
+		return database;
 	}
 
 }
