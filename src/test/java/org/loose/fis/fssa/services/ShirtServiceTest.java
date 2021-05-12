@@ -73,11 +73,56 @@ class ShirtServiceTest {
 	}
 	
 	@Test
-	 @DisplayName("Blank field cannot be entered")
-	 void testBlankFieldCannotBeEntered()
+	 @DisplayName("Blank team field cannot be entered")
+	 void testBlankTeamFieldCannotBeEntered()
 	 {
 		 assertThrows(BlankFieldsException.class, () -> {
-			 ShirtService.VerifyBlanks("", LEAGUE, PRICE, QUANTITY, IMAGE);
+			 ShirtService.VerifyBlanks("", LEAGUE, PRICE, QUANTITY, IMAGE);	 
+		 });
+	 }
+	
+	@Test
+	 @DisplayName("Blank league field cannot be entered")
+	 void testBlankLeagueFieldCannotBeEntered()
+	 {
+		 assertThrows(BlankFieldsException.class, () -> {
+			 ShirtService.VerifyBlanks(TEAM, "", PRICE, QUANTITY, IMAGE);	 
+		 });
+	 }
+	
+	@Test
+	 @DisplayName("Blank price field cannot be entered")
+	 void testBlankPriceFieldCannotBeEntered()
+	 {
+		 assertThrows(BlankFieldsException.class, () -> {
+			 ShirtService.VerifyBlanks(TEAM, LEAGUE, "", QUANTITY, IMAGE);		 
+		 });
+	 }
+	
+	@Test
+	 @DisplayName("Blank quantity field cannot be entered")
+	 void testBlankQuantityFieldCannotBeEntered()
+	 {
+		 assertThrows(BlankFieldsException.class, () -> {
+			 ShirtService.VerifyBlanks(TEAM, LEAGUE, PRICE, "", IMAGE);	 
+		 });
+	 }
+	
+	@Test
+	 @DisplayName("Blank image field cannot be entered")
+	 void testBlankImageFieldCannotBeEntered()
+	 {
+		 assertThrows(BlankFieldsException.class, () -> {
+			 ShirtService.VerifyBlanks(TEAM, LEAGUE, PRICE, QUANTITY, "");		 
+		 });
+	 }
+	
+	@Test
+	 @DisplayName("All blank fields cannot be entered")
+	 void testAllBlankFieldsCannotBeEntered()
+	 {
+		 assertThrows(BlankFieldsException.class, () -> {
+			 ShirtService.VerifyBlanks("", "", "", "", "");		 
 		 });
 	 }
 	
@@ -90,6 +135,7 @@ class ShirtServiceTest {
 			ShirtService.VerifyWrongs("team1", LEAGUE, PRICE, QUANTITY, IMAGE);
 		 });
 	 }
+	
 	
 	@Test
 	@DisplayName("Shirt is succesfuly edited in database")
@@ -150,5 +196,15 @@ class ShirtServiceTest {
         assertThat(shirt.getQuantity()).isEqualTo(Integer.parseInt(QUANTITY+1));
         assertThat(shirt.getPrice()).isEqualTo(Integer.parseInt(PRICE+1));
         assertThat(shirt.getImage()).isEqualTo(IMAGE+1);
+	}
+	
+	@Test
+	@DisplayName("Shirt number is succesfully returned")
+	void testShirtNumberIsReturnedCorrectly() {
+		ShirtService.addShirt(TEAM, LEAGUE, PRICE, QUANTITY, IMAGE);
+		ShirtService.addShirt(TEAM+1, LEAGUE+1, PRICE+1, QUANTITY+1, IMAGE+1);
+		ShirtService.addShirt(TEAM+2, LEAGUE+2, PRICE+2, QUANTITY+2, IMAGE+2);
+		ShirtService.addShirt(TEAM+3, LEAGUE+3, PRICE+3, QUANTITY+3, IMAGE+3);
+		assertThat(ShirtService.getShirtNumber()).isEqualTo(4);
 	}
 }
