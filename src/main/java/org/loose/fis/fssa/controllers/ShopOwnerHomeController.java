@@ -123,7 +123,7 @@ public class ShopOwnerHomeController {
 	@FXML
     void handleLogout(ActionEvent event) throws Exception {
 		Stage primaryStage=(Stage)Logout.getScene().getWindow();
-		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
+		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 	     primaryStage.setTitle("Login");
 	     primaryStage.setScene(new Scene(root, 400, 300));
 	     primaryStage.show();
@@ -197,7 +197,7 @@ public class ShopOwnerHomeController {
     @FXML
     void handleGoToOrder(ActionEvent event) throws Exception {
     	Stage primaryStage=(Stage)Logout.getScene().getWindow();
-		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/ordersPage.fxml"));
+		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("ordersPage.fxml"));
 	     primaryStage.setTitle("Orders Page");
 	     primaryStage.setScene(new Scene(root, 900, 600));
 	     primaryStage.show();

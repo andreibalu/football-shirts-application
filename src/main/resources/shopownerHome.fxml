@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.ShopOwnerHomeController">
    <children>
       <Button fx:id="Logout" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="48.0" prefWidth="70.0" stylesheets="@../styles/shopownerhomestyle.css" text="Logout" textAlignment="CENTER" />
-      <AnchorPane prefHeight="570.0" prefWidth="259.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@../styles/shopownerhomestyle.css">
+      <AnchorPane prefHeight="570.0" prefWidth="259.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@styles/shopownerhomestyle.css">
          <children>
             <Button fx:id="addButton" layoutX="95.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleAddShirts" stylesheets="@../styles/shopownerhomestyle.css" text="Add" textAlignment="CENTER" />
             <Button fx:id="editButton" layoutX="95.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleEditShirts" text="Edit" textAlignment="CENTER" />
@@ -37,6 +37,6 @@
          <font>
             <Font size="24.0" />
          </font></Text>
-      <Button fx:id="Order" layoutX="736.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleGoToOrder" prefHeight="48.0" stylesheets="@../styles/shopownerhomestyle.css" text="Orders Page" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="Order" layoutX="736.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleGoToOrder" prefHeight="48.0" stylesheets="@styles/shopownerhomestyle.css" text="Orders Page" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

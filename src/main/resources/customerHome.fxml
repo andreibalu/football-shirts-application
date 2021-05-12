@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1081.0" stylesheets="@../styles/shopownerhomestyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
    <children>
-      <AnchorPane layoutX="-31.0" layoutY="-9.0" prefHeight="587.0" prefWidth="268.0" styleClass="sidebar" stylesheets="@../styles/customerhome.css">
+      <AnchorPane layoutX="-31.0" layoutY="-9.0" prefHeight="587.0" prefWidth="268.0" styleClass="sidebar" stylesheets="@styles/customerhome.css">
          <children>
             <VBox fx:id="selectedShirt" fillWidth="false" layoutX="39.0" layoutY="99.0" prefHeight="389.0" prefWidth="240.0" styleClass="selected-shirt" stylesheets="@../styles/customerhome.css">
                <children>
@@ -38,7 +38,7 @@
                   </HBox>
                   <ImageView fx:id="SelectedShirtImage" fitHeight="143.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
-                        <Image url="@../images/lvp.jpg" />
+                        <Image url="@images/lvp.jpg" />
                      </image>
                      <VBox.margin>
                         <Insets left="15.0" />

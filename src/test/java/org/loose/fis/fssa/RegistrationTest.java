@@ -45,7 +45,7 @@ class RegistrationTest {
 	
 	@Start
 	void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
         primaryStage.setTitle("Register");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
@@ -79,6 +79,6 @@ class RegistrationTest {
 	}
 	@Test
 	void testGoToLoginButton(FxRobot robot) {
-		robot.clickOn("#gotologinButton");
+		robot.clickOn("#gotoLoginButton");
 	}
 }

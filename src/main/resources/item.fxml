@@ -22,7 +22,7 @@
             </HBox>
             <ImageView fx:id="imageLabel" fitHeight="137.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/lvp.jpg" />
+                  <Image url="@images/lvp.jpg" />
                </image>
             </ImageView>
          </children>
