@@ -15,11 +15,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1081.0" stylesheets="@../styles/shopownerhomestyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="1081.0" stylesheets="@styles/shopownerhomestyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.CustomerHomeController">
    <children>
       <AnchorPane layoutX="-31.0" layoutY="-9.0" prefHeight="587.0" prefWidth="268.0" styleClass="sidebar" stylesheets="@styles/customerhome.css">
          <children>
-            <VBox fx:id="selectedShirt" fillWidth="false" layoutX="39.0" layoutY="99.0" prefHeight="389.0" prefWidth="240.0" styleClass="selected-shirt" stylesheets="@../styles/customerhome.css">
+            <VBox fx:id="selectedShirt" fillWidth="false" layoutX="39.0" layoutY="99.0" prefHeight="389.0" prefWidth="240.0" styleClass="selected-shirt" stylesheets="@styles/customerhome.css">
                <children>
                   <HBox alignment="CENTER" prefHeight="81.0" prefWidth="240.0">
                      <children>
@@ -47,19 +47,19 @@
                   <HBox prefHeight="55.0" prefWidth="185.0">
                      <children>
                         <Label prefHeight="36.0" prefWidth="70.0" text="Quantity:" />
-                        <TextField fx:id="selectedQuantity" prefHeight="27.0" prefWidth="111.0" styleClass="quantity-field" stylesheets="@../styles/customerhome.css">
+                        <TextField fx:id="selectedQuantity" id="quantity" prefHeight="27.0" prefWidth="111.0" styleClass="quantity-field" stylesheets="@styles/customerhome.css">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </TextField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#handleAddToCart" prefHeight="59.0" prefWidth="132.0" text="Add to cart" wrapText="true">
+                  <Button mnemonicParsing="false" onAction="#handleAddToCart" id="addtocartButton" prefHeight="59.0" prefWidth="132.0" styleClass="Logout" stylesheets="@styles/customerhome.css" text="Add to cart" wrapText="true">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
                   </Button>
-                  <Text fx:id="addtocartmessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.13671875">
+                  <Text fx:id="addtocartmessage" id="addtocartMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.13671875">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -69,12 +69,12 @@
                </children>
             </VBox>
          </children></AnchorPane>
-      <Button fx:id="Logout" layoutX="881.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="66.0" styleClass="Logout" stylesheets="@../styles/customerhome.css" text="Logout" />
+      <Button fx:id="Logout" id="logoutfromCustomerButton" layoutX="881.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="66.0" styleClass="Logout" stylesheets="@styles/customerhome.css" text="Logout" />
       <HBox alignment="CENTER" layoutX="258.0" layoutY="89.0" prefHeight="486.0" prefWidth="811.0">
          <children>
             <ScrollPane fx:id="scroll" prefHeight="486.0" prefWidth="786.0" HBox.hgrow="ALWAYS">
                <content>
-                  <GridPane fx:id="grid" prefHeight="4.0" prefWidth="50.0">
+                  <GridPane id="selectShirt" fx:id="grid" prefHeight="4.0" prefWidth="50.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -87,20 +87,20 @@
          <children>
             <VBox>
                <children>
-                  <TextField fx:id="enteredName" promptText="Name" styleClass="quantity-field" stylesheets="@../styles/customerhome.css" />
-                  <TextField fx:id="enteredCountry" promptText="Country" styleClass="quantity-field" stylesheets="@../styles/customerhome.css">
+                  <TextField fx:id="enteredName" id="entername" promptText="Name" styleClass="quantity-field" stylesheets="@styles/customerhome.css" />
+                  <TextField fx:id="enteredCountry" id="entercountry" promptText="Country" styleClass="quantity-field" stylesheets="@styles/customerhome.css">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
-            <Button mnemonicParsing="false" onAction="#handlePlaceOrder" prefHeight="63.0" prefWidth="112.0" text="Place order" wrapText="true">
+            <Button mnemonicParsing="false" id="placeorderButton" onAction="#handlePlaceOrder" prefHeight="63.0" prefWidth="112.0" styleClass="Logout" stylesheets="@styles/customerhome.css" text="Place order" wrapText="true">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Text fx:id="ordermessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="335.13671875">
+            <Text fx:id="ordermessage" id="orderplacedMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="335.13671875">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
