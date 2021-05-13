@@ -1,16 +1,15 @@
 package org.loose.fis.fssa;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.testfx.assertions.api.Assertions.assertThat;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.loose.fis.fssa.exceptions.InvalidCredentialsException;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.fssa.services.FileSystemService;
+import org.loose.fis.fssa.services.OrderService;
 import org.loose.fis.fssa.services.ShirtService;
 import org.loose.fis.fssa.services.UserService;
 import org.testfx.api.FxRobot;
@@ -25,16 +24,16 @@ import javafx.stage.Stage;
 
 @ExtendWith(ApplicationExtension.class)
 
-class LoginTest {
+class ViewShirtsAsCustomerTest {
 
-	public static final String USERNAMEOWNER = "owner boss";
 	public static final String USERNAMECUSTOMER = "customer";
 	public static final String PASSWORD = "password";
 	 
+
 	@AfterEach
 	   void tearDown() {
-	      UserService.getDatabase().close();
 	      ShirtService.getDatabase().close();
+	      UserService.getDatabase().close();
 	    }
 	
 	@BeforeEach
@@ -44,6 +43,7 @@ class LoginTest {
       FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
       UserService.initDatabase();
       ShirtService.initDatabase();
+      UserService.addUser(USERNAMECUSTOMER, PASSWORD,"Customer");
 	}
 	
 	@Start
@@ -55,53 +55,19 @@ class LoginTest {
 	}
 	
 	@Test
-	void testLogin(FxRobot robot) throws UsernameAlreadyExistsException  {
-		UserService.addUser(USERNAMEOWNER, PASSWORD,"Shop Owner");
-		ShirtService.addShirt("team","league","10","10","/images/lvp.jpg");
-		robot.clickOn("#username");
-		robot.write(USERNAMEOWNER);
-		robot.clickOn("#password");
-		robot.write(PASSWORD);
-		robot.clickOn("#role");
-		robot.type(KeyCode.DOWN);//selects Shop Owner role
-		robot.type(KeyCode.ENTER);
-		robot.clickOn("#loginButton");
-	}
-	
-	@Test
-	void testCustomerLogin(FxRobot robot) throws UsernameAlreadyExistsException {
-		UserService.addUser(USERNAMECUSTOMER, PASSWORD,"Customer");
-		ShirtService.addShirt("team","league","10","10","/images/lvp.jpg");
+	void testViewShirts(FxRobot robot) throws UsernameAlreadyExistsException {
+		ShirtService.addShirt("Liverpool","Premier League","10","60","/images/lvp.jpg");
+		ShirtService.addShirt("Poli Timisoara","Liga 2","6","20","/images/politm.jpg");
+		ShirtService.addShirt("Eintracht Frankfurt","Bundesliga","5","40","/images/frankfurt.jpg");
+		ShirtService.addShirt("Otelul Galati","Liga 4","16","10","/images/otelul.jpg");
 		robot.clickOn("#username");
 		robot.write(USERNAMECUSTOMER);
 		robot.clickOn("#password");
 		robot.write(PASSWORD);
 		robot.clickOn("#role");
 		robot.type(KeyCode.DOWN);
-		robot.type(KeyCode.DOWN);//selects Customer role
+		robot.type(KeyCode.DOWN); //selects Customer role
 		robot.type(KeyCode.ENTER);
 		robot.clickOn("#loginButton");
 	}
-	
-	@Test
-	void testCustomerCanNotEnterInvalidCredentials(FxRobot robot) throws UsernameAlreadyExistsException,InvalidCredentialsException{
-		UserService.addUser(USERNAMECUSTOMER, PASSWORD,"Customer");
-		robot.clickOn("#username");
-		robot.write("customerWRONG");
-		robot.clickOn("#password");
-		robot.write(PASSWORD);
-		robot.clickOn("#role");
-		robot.type(KeyCode.DOWN);
-		robot.type(KeyCode.DOWN);//selects Customer role
-		robot.type(KeyCode.ENTER);
-		
-		robot.clickOn("#loginButton");
-		assertThat(robot.lookup("#loginMessage").queryText()).hasText(String.format("Invalid credentials, please try again!"));
-	}
-	
-	@Test
-	void testRedirectToRegister(FxRobot robot) {
-		robot.clickOn("#redirectToRegisterButton");
-	}
-
 }
