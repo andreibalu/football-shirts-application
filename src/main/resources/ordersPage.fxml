@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.OrdersPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.fssa.controllers.OrdersPageController">
    <children>
       <Button fx:id="Logout" id="Logout" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="48.0" prefWidth="70.0" stylesheets="@/styles/shopownerhomestyle.css" text="Logout" textAlignment="CENTER" />
       <AnchorPane prefHeight="570.0" prefWidth="202.0" style="-fx-border-radius: 1;" styleClass="sidebar" stylesheets="@styles/shopownerhomestyle.css">
