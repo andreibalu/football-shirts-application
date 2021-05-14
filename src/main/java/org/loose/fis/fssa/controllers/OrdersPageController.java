@@ -71,7 +71,7 @@ public class OrdersPageController {
     
     private int contor;
     
-    private String s; 
+    private static String s; 
     
     ObservableList<Order> list=  FXCollections.observableArrayList();
     
@@ -143,10 +143,12 @@ public class OrdersPageController {
     	}
     }
     
+   public static void setS(String str) {
+	   s=str;
+   }
     
     @FXML
-    void handleAcceptOrder(ActionEvent event) {
-    	
+    void handleAcceptOrder(ActionEvent event) {   	
     	OrderService.acceptOrder(selectedName.getText(), selectedCountry.getText());
     	messageAfter.setText("Order was accepted successfully !");
     }

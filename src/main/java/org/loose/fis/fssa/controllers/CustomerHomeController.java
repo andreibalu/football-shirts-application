@@ -96,7 +96,8 @@ public class CustomerHomeController  {
 		   ShirtService.VerifyStock(SelectedShirtLabel.getText(), qu);
           ShirtCartService.addShirtToCart(SelectedShirtLabel.getText(),SelectedPriceLabel.getText(),selectedQuantity.getText());
           ShirtService.removeQuantity(SelectedShirtLabel.getText(),qu);
-          addtocartmessage.setText("Added shirt succesfully to cart");         
+          addtocartmessage.setText("Added shirt succesfully to cart");
+          
 	    }catch(NotEnoughStockException e)
 		   {
 	    	addtocartmessage.setText(e.getMessage());

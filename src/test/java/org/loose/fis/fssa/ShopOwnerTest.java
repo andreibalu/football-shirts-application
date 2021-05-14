@@ -62,7 +62,7 @@ class ShopOwnerTest {
 	void start(Stage primaryStage) throws Exception {	    
 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 	       primaryStage.setTitle("Login");
-	       primaryStage.setScene(new Scene(root, 900, 600));
+	       primaryStage.setScene(new Scene(root, 400, 300));
 	       primaryStage.show();
 	}
 	

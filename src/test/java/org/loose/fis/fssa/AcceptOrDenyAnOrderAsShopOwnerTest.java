@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.loose.fis.fssa.controllers.OrdersPageController;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.fssa.services.FileSystemService;
 import org.loose.fis.fssa.services.OrderService;
@@ -59,7 +60,7 @@ class AcceptOrDenyAnOrderAsShopOwnerTest {
 	void start(Stage primaryStage) throws Exception {	    
 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 	       primaryStage.setTitle("Login");
-	       primaryStage.setScene(new Scene(root, 900, 600));
+	       primaryStage.setScene(new Scene(root, 400, 300));
 	       primaryStage.show();
 	}
 	
@@ -119,6 +120,29 @@ class AcceptOrDenyAnOrderAsShopOwnerTest {
 		assertThat(robot.lookup("#afterOrderMessage").queryText()).hasText("Order was accepted successfully !");
 	}
 	
-	
+	 @Test
+	    void TestDenyOrder(FxRobot robot) throws UsernameAlreadyExistsException{
+	        ShirtService.addShirt("Otelul Galati","Liga 4","16","10","/images/otelul.jpg");
+	        OrderService.addOrdertoDatabase("Otelul Galati-3,", "20", CUSTOMERNAME, CUSTOMERCOUNTRY);
+	        OrdersPageController.setS("Otelul Galati-3,");
+	        robot.clickOn("#username");
+	        robot.write(USERNAMEOWNER);
+	        robot.clickOn("#password");
+	        robot.write(PASSWORD);
+	        robot.clickOn("#role");
+	        robot.type(KeyCode.DOWN); //selects Shop Owner role
+	        robot.type(KeyCode.ENTER);
+	        robot.clickOn("#loginButton");
+	        robot.clickOn("#ordersButton");
+	        
+	        robot.clickOn("#selectedName");
+	        robot.write(CUSTOMERNAME);
+	        robot.clickOn("#selectedCountry");
+	        robot.write(CUSTOMERCOUNTRY);
+	        robot.clickOn("#denyButton");
+	        robot.clickOn("#refreshOrders");
+	        
+	        assertThat(robot.lookup("#afterOrderMessage").queryText()).hasText("Order was denied successfully !");
+	    }
 	
 }
