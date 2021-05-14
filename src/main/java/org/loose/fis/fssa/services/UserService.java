@@ -2,6 +2,7 @@ package org.loose.fis.fssa.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.fssa.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.fssa.exceptions.InvalidCredentialsException;
 import org.loose.fis.fssa.model.User;
@@ -9,6 +10,7 @@ import org.loose.fis.fssa.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Objects;
 
 import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
@@ -16,15 +18,16 @@ import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
-
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+    	FileSystemService.initDirectory();
+         database = Nitrite.builder()
                 .filePath(getPathToFile("shirt-application.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
     }
-
+    
     public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role));
@@ -35,6 +38,9 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+    public static List<User> getAllUsers() {
+        return userRepository.find().toList();
     }
     public static void verifyLogin(String username,String password) throws InvalidCredentialsException{
     	checkUserCredentialsInLogin(username,password);
@@ -56,7 +62,7 @@ public class UserService {
     	}
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -75,6 +81,10 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+    
+    public static Nitrite getDatabase() {
+        return database;
     }
 
 

@@ -33,7 +33,7 @@ public class RegistrationController {
     @FXML
     void handleGoToLoginAction(ActionEvent event) throws Exception{
     	Stage primaryStage=(Stage)registrationMessage.getScene().getWindow();
-    	Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();

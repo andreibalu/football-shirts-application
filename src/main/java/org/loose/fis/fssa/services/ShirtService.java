@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Objects;
 
 import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
@@ -25,13 +26,13 @@ import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
 public class ShirtService {
 
 	private static ObjectRepository<Shirt> shirtRepository;
-	
-	
+    private static Nitrite database;
 	private static int contorshirt=0;
 	
 	
 	public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+		FileSystemService.initDirectory();
+         database = Nitrite.builder()
                 .filePath(getPathToFile("shirts-list.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -42,6 +43,10 @@ public class ShirtService {
 		int pr=Integer.parseInt(price);
 		int qu=Integer.parseInt(quantity);
         shirtRepository.insert(new Shirt(team, league,pr, qu, image));
+    }
+	
+	public static List<Shirt> getAllShirts() {
+        return shirtRepository.find().toList();
     }
 	
 	public static void editShirt(String team, String league, String price, String quantity, String image) {
@@ -58,8 +63,6 @@ public class ShirtService {
 		}
 	}
 	
-	
-
 	public static void removeShirt(String team, String league, String price, String quantity, String image) {
 		for (Shirt shirt : shirtRepository.find()) {
 			if(Objects.equals(team, shirt.getTeam()))
@@ -150,5 +153,10 @@ public class ShirtService {
         }
         return null;
     }
+	
+	public static Nitrite getDatabase()
+	{
+		return database;
+	}
 	
 }

@@ -71,7 +71,7 @@ public class OrdersPageController {
     
     private int contor;
     
-    private String s; 
+    private static String s; 
     
     ObservableList<Order> list=  FXCollections.observableArrayList();
     
@@ -117,7 +117,7 @@ public class OrdersPageController {
     @FXML
     void handleGoToHomePage(ActionEvent event) throws Exception {
     	Stage primaryStage=(Stage)HomePage.getScene().getWindow();
-    	Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/shopownerHome.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("shopownerHome.fxml"));
         primaryStage.setTitle("Shop Owner Home");
         primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
@@ -126,7 +126,7 @@ public class OrdersPageController {
     @FXML
     void handleLogout(ActionEvent event) throws Exception {
 		Stage primaryStage=(Stage)Logout.getScene().getWindow();
-		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
+		 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 	     primaryStage.setTitle("Login");
 	     primaryStage.setScene(new Scene(root, 400, 300));
 	     primaryStage.show();
@@ -143,16 +143,20 @@ public class OrdersPageController {
     	}
     }
     
+   public static void setS(String str) {
+	   s=str;
+   }
     
     @FXML
-    void handleAcceptOrder(ActionEvent event) {
-    	
+    void handleAcceptOrder(ActionEvent event) {   	
     	OrderService.acceptOrder(selectedName.getText(), selectedCountry.getText());
     	messageAfter.setText("Order was accepted successfully !");
     }
 
     @FXML
     void handleDenyOrder(ActionEvent event) {
+    	String ss;
+    	ss=s;
     	OrderService.denyOrder(selectedName.getText(), selectedCountry.getText());
     	messageAfter.setText("Order was denied successfully !");
     	denialReason.clear();
@@ -161,9 +165,9 @@ public class OrdersPageController {
     	String nume="";
     	String cantitate="";
     	int ok=0,cant=0;
-    	for(i=0; i<s.length();i++) {
-    		if(s.charAt(i)!=','){
-    			aux=aux+s.charAt(i);
+    	for(i=0; i<ss.length();i++) {
+    		if(ss.charAt(i)!=','){
+    			aux=aux+ss.charAt(i);
     		}
     		else {
     			for(j=0;j<aux.length();j++) {

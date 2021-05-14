@@ -36,14 +36,14 @@ public void handleLoginAction() throws Exception {
    String rol=(String)role.getValue();
    if(rol.equals("Customer"))
    {
-	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/customerHome.fxml"));
+	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("customerHome.fxml"));
        primaryStage.setTitle("Customer Home");
        primaryStage.setScene(new Scene(root, 1050, 600));
        primaryStage.show();
    }
    if(rol.equals("Shop Owner"))
    {
-	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/shopownerHome.fxml"));
+	   Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("shopownerHome.fxml"));
        primaryStage.setTitle("Shop Owner Home");
        primaryStage.setScene(new Scene(root, 900, 600));
        primaryStage.show();
@@ -55,7 +55,7 @@ public void handleLoginAction() throws Exception {
 @FXML
 public void handleRedirectRegisterAction() throws Exception{
 	Stage primaryStage=(Stage)loginMessage.getScene().getWindow();
-	 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/register.fxml"));
+	 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
      primaryStage.setTitle("Register");
      primaryStage.setScene(new Scene(root, 400, 300));
      primaryStage.show();

@@ -30,6 +30,15 @@ mvn clean install
 
 You can use IntelliJ or Eclipse, and then import the project as a Maven project.
 
+#### Run the project using Maven
+
+To start and run the project using Maven use the following command in the command line: 
+
+```
+
+mvn javafx:run
+```
+
 ## Registration
 
 You can register into this application using one of two roles:
@@ -43,7 +52,7 @@ After he logs in, a customer can view the shirts offered by the shop owner, sele
 
 ### Shop Owner
 
-After the Shop Owner logs in, he can edit the list of shirts, view the orders that were placed by customers and then accept or deny an order.
+After the Shop Owner logs in, he can accept, edit or remove from the list of shirts, view the orders that were placed by customers and then accept or deny an order.
 
 
 

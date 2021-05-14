@@ -82,7 +82,7 @@ public class CustomerHomeController  {
 	   @FXML
 	   void handleLogoutAction(ActionEvent event) throws Exception{
 		   Stage primaryStage=(Stage)Logout.getScene().getWindow();
-			 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/login.fxml"));
+			 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 		     primaryStage.setTitle("Login");
 		     primaryStage.setScene(new Scene(root, 400, 300));
 		     primaryStage.show();
@@ -144,7 +144,7 @@ public class CustomerHomeController  {
 		for(int i=1;i<=contor;i++)
 		{
 			FXMLLoader fxmlloader=new FXMLLoader();
-			fxmlloader.setLocation(getClass().getClassLoader().getResource("resources/item.fxml"));
+			fxmlloader.setLocation(getClass().getClassLoader().getResource("item.fxml"));
 			AnchorPane anchorpane=fxmlloader.load();
 			
 			ItemController itemcontroller=fxmlloader.getController();

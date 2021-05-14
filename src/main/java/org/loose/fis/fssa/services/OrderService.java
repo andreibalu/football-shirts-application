@@ -2,6 +2,7 @@ package org.loose.fis.fssa.services;
 
 import static org.loose.fis.fssa.services.FileSystemService.getPathToFile;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.dizitart.no2.Nitrite;
@@ -14,10 +15,10 @@ import org.loose.fis.fssa.model.Shirt;
 
 public class OrderService {
 	private static int contororder=0;
-      
+    private static Nitrite database;
 	private static ObjectRepository<Order> orderRepository;
 	public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+         database = Nitrite.builder()
                 .filePath(getPathToFile("orders.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -28,6 +29,10 @@ public class OrderService {
 		int pr=Integer.parseInt(total_price);
 		orderRepository.insert(new Order(team_quantity,pr,customer_name,customer_country));
 	}
+	
+	public static List<Order> getAllOrders() {
+        return orderRepository.find().toList();
+    }
 	
 	public static int getOrderNumber() {
 		contororder=0;
@@ -63,7 +68,9 @@ public class OrderService {
         return null;
     }
 	
-	
-	
+	public static Nitrite getDatabase()
+	{
+		return database;
+	}
 	
 }
